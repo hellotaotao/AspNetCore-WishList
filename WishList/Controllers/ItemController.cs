@@ -13,20 +13,21 @@ namespace WishList.Controllers
         {
             _context = context;
         }
-
-        // GET
+        
         public IActionResult Index()
         {
             var model = _context.Items.ToList();
             return View("Index", model);
         }
 
-        public IActionResult HttpGet()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View("Create");
         }
 
-        public IActionResult HttpPost(Item item)
+        [HttpPost]
+        public IActionResult Create(Item item)
         {
             _context.Items.Add(item);
             _context.SaveChanges();
